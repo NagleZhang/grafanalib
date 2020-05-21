@@ -1326,6 +1326,8 @@ class SingleStat(object):
     prefixFontSize = attr.ib(default="50%")
     rangeMaps = attr.ib(default=attr.Factory(list))
     repeat = attr.ib(default=None)
+    repeatDirection = attr.ib(default=None)
+    maxPerRow = attr.ib(default=None, validator=instance_of(int))
     span = attr.ib(default=6)
     sparkline = attr.ib(
         default=attr.Factory(SparkLine),
@@ -1367,6 +1369,8 @@ class SingleStat(object):
             'prefixFontSize': self.prefixFontSize,
             'rangeMaps': self.rangeMaps,
             'repeat': self.repeat,
+            'repeatDirection': self.repeatDirection,
+            'maxPerRow': self.maxPerRow,
             'span': self.span,
             'sparkline': self.sparkline,
             'targets': self.targets,
