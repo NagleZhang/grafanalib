@@ -1327,7 +1327,7 @@ class SingleStat(object):
     rangeMaps = attr.ib(default=attr.Factory(list))
     repeat = attr.ib(default=None)
     repeatDirection = attr.ib(default=None)
-    maxPerRow = attr.ib(default=None, validator=instance_of(int))
+    maxPerRow = attr.ib(default=None)
     span = attr.ib(default=6)
     sparkline = attr.ib(
         default=attr.Factory(SparkLine),
