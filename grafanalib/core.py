@@ -256,6 +256,24 @@ VTYPE_DELTA = "delta"
 VTYPE_RANGE = "range"
 VTYPE_DEFAULT = VTYPE_AVG
 
+@attr.s
+class GridPos(object):
+    """
+    Define panel size and position
+    Grafana doc on : https://grafana.com/docs/grafana/latest/reference/dashboard/#panel-size-and-position
+    """
+    height = attr.ib(default=None)
+    width = attr.ib(default=None)
+    xpos = attr.ib(default=None)
+    ypos = attr.ib(default=None)
+
+    def to_json_data(self):
+        return {
+            "x": self.xpos,
+            "y": self.ypos,
+            "h": self.height,
+            "w": self.width
+        }
 
 @attr.s
 class Grid(object):
@@ -1339,6 +1357,10 @@ class SingleStat(object):
     valueName = attr.ib(default=VTYPE_DEFAULT)
     valueMaps = attr.ib(default=attr.Factory(list))
     timeFrom = attr.ib(default=None)
+    gridPos = attr.ib(
+        default=attr.Factory(GridPos),
+        validator=instance_of(GridPos)
+    )
 
     def to_json_data(self):
         return {
@@ -1382,6 +1404,7 @@ class SingleStat(object):
             'valueMaps': self.valueMaps,
             'valueName': self.valueName,
             'timeFrom': self.timeFrom,
+            'gridPos': self.gridPos,
         }
 
 
