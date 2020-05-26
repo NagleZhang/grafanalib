@@ -770,6 +770,7 @@ DEFAULT_TIME = Time('now-1h', 'now')
 
 @attr.s
 class TimePicker(object):
+    hidden = attr.ib(default=None)
     refreshIntervals = attr.ib()
     timeOptions = attr.ib()
 
@@ -777,6 +778,7 @@ class TimePicker(object):
         return {
             'refresh_intervals': self.refreshIntervals,
             'time_options': self.timeOptions,
+            'hidden': self.hidden
         }
 
 
@@ -805,6 +807,34 @@ DEFAULT_TIME_PICKER = TimePicker(
         "30d"
     ]
 )
+
+HIDDEN_TIME_PICKER = TimePicker(
+    hidden=True,
+    refreshIntervals=[
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+    ],
+    timeOptions=[
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+    ]
+)
+
 
 
 @attr.s
