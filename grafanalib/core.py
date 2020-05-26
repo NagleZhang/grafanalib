@@ -770,9 +770,9 @@ DEFAULT_TIME = Time('now-1h', 'now')
 
 @attr.s
 class TimePicker(object):
-    hidden = attr.ib(default=None)
     refreshIntervals = attr.ib()
     timeOptions = attr.ib()
+    hidden = attr.ib(default=None)
 
     def to_json_data(self):
         return {
